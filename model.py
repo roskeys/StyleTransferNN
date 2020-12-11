@@ -178,7 +178,7 @@ if __name__ == '__main__':
     with open("changjiang10.jpg", 'rb') as f:
         content_image = f.read()
 
-    result = generate('8.jpg', content_image, num_iteration=150)
+    result = generate('Chinese_style_4.jpeg', content_image, num_iteration=25)
 
     with open("test.png", 'wb') as f:
         f.write(result)
