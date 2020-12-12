@@ -28,12 +28,12 @@ async def create_upload_file(file: UploadFile = File(...)):
 
 @app.get('/getimage')
 async def get_process_image(filename, style: str = '10', similarity:str=''):
-    user_image = open(f'frontend/temp_image/{filename}', 'rb').read()
-    image_bytes = app(user_image, style, int(similarity))
-    file_name = encode_filename(filename)
-    with open(f'frontend/temp_image/{file_name}', 'wb') as f:
-        f.write(image_bytes)
-    return {'imagepath':file_name}
+    # user_image = open(f'frontend/temp_image/{filename}', 'rb').read()
+    # image_bytes = app(user_image, style, int(similarity))
+    # file_name = encode_filename(filename) + '.png'
+    # with open(f'frontend/temp_image/{file_name}', 'wb') as f:
+    #     f.write(image_bytes)
+    return {'imagepath':'file_name'}
 
 
 if __name__ == "__main__":
