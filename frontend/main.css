@@ -136,3 +136,12 @@ img {
 .main_full {
   padding-bottom: 1%;
 }
+
+.imgcontainer {
+  float: right;
+  width: 49%;
+}
+.oriimgcontainer {
+  float: left;
+  width: 49%;
+}
