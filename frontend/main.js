@@ -4,7 +4,7 @@ const handleImageUpload = (event) => {
   const formData = new FormData();
   formData.append("file", files[0]);
 
-  fetch("http://localhost:8000/uploadfile", {
+  fetch("http://localhost:64190/api/uploadfile", {
     method: "POST",
     body: formData,
   })
@@ -13,7 +13,7 @@ const handleImageUpload = (event) => {
     })
     .then((data) => {
       document.querySelector(".result .msg").innerHTML =
-        "Upload success, please select stype you want from left panel";
+        "Upload success, please select style you want from left panel";
       localStorage.setItem("filename", data.filename);
     })
     .catch((error) => {
@@ -40,10 +40,13 @@ window.onload = function () {
     var img = document.createElement("IMG");
     img.setAttribute("src", element["url"]);
     img.addEventListener("click", function () {
-      similarity = document.querySelector(".similarity input").value;
+      var similarity = document.querySelector(".similarity input").value;
+      if(similarity==''){
+        similarity = '25';
+      }
       style_id = element["url"];
       fetch(
-        "http://localhost:8000/getimage?filename=" +
+        "http://localhost:64190/api/getimage?filename=" +
           localStorage.getItem("filename") +
           "&style=" +
           style_id + '&similarity=' + similarity,
@@ -57,8 +60,8 @@ window.onload = function () {
         .then((data) => {
           console.log(data);
           var img = document.createElement('IMG')
-          // img.setAttribute('src', '/temp_image/' + data.imagepath)
-          img.setAttribute('src', 'temp_image/' + 'b7378dc65b79613b912f3313a2fe1ec5.png')
+          img.setAttribute('src', 'temp_image/' + data.imagepath)
+          // img.setAttribute('src', 'temp_image/' + 'b7378dc65b79613b912f3313a2fe1ec5.png')
           document.querySelector('.result .imgcontainer').innerHTML = ''
           document.querySelector('.result .imgcontainer').appendChild(img)
         });
