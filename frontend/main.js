@@ -1,10 +1,12 @@
+const BASEURL = 'http://localhost:64190'
+
 const handleImageUpload = (event) => {
   document.querySelector(".result .msg").innerHTML = "";
   const files = event.target.files;
   const formData = new FormData();
   formData.append("file", files[0]);
 
-  fetch("http://localhost:64190/api/uploadfile", {
+  fetch(BASEURL +  "/api/uploadfile", {
     method: "POST",
     body: formData,
   })
@@ -46,7 +48,7 @@ window.onload = function () {
       }
       style_id = element["url"];
       fetch(
-        "http://localhost:64190/api/getimage?filename=" +
+        BASEURL + "/api/getimage?filename=" +
           localStorage.getItem("filename") +
           "&style=" +
           style_id + '&similarity=' + similarity,
