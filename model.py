@@ -12,7 +12,7 @@ import torchvision.models as models
 import torchvision.transforms as transforms
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-imsize = 512 if torch.cuda.is_available() else 128
+imsize = 512
 loader = transforms.Compose([transforms.CenterCrop(imsize), transforms.ToTensor()])
 unloader = transforms.ToPILImage()
 cnn = models.vgg19(pretrained=True).features.to(device).eval()
@@ -182,7 +182,7 @@ if __name__ == '__main__':
     with open("test.png", 'rb') as f:
         content_image = f.read()
 
-    result = generate('44296041_30.jpg', content_image, num_iteration=300)
+    result = generate('44296041_16.jpg', content_image, num_iteration=50)
 
     with open("result.png", 'wb') as f:
         f.write(result)
