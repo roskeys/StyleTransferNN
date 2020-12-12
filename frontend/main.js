@@ -52,6 +52,7 @@ window.onload = function () {
     var img = document.createElement("IMG");
     img.setAttribute("src", "style/" + element["url"]);
     img.addEventListener("click", function () {
+      document.querySelector(".result .msg").innerHTML = 'Processing, please wait'
       var similarity = document.querySelector(".similarity input").value;
       if (similarity == "") {
         similarity = "25";
@@ -79,6 +80,7 @@ window.onload = function () {
           // img.setAttribute('src', 'temp_image/' + 'b7378dc65b79613b912f3313a2fe1ec5.png')
           document.querySelector(".result .imgcontainer").innerHTML = "";
           document.querySelector(".result .imgcontainer").appendChild(img);
+        document.querySelector(".result .msg").innerHTML = 'Done!'
         });
     });
     div.appendChild(img);
