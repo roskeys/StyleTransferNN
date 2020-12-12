@@ -139,8 +139,9 @@ img {
 
 .imgcontainer {
   float: right;
-  width: 50%;
+  width: 49%;
 }
 .oriimgcontainer {
-  width: 50%;
+  float: left;
+  width: 49%;
 }

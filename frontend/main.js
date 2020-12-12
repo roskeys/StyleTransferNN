@@ -1,4 +1,4 @@
-const BASEURL = "http://localhost:64190";
+const BASEURL = "http://18.141.183.4:64109";
 
 const handleImageUpload = (event) => {
   document.querySelector(".result .msg").innerHTML = "";
