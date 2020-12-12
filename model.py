@@ -180,5 +180,5 @@ if __name__ == '__main__':
 
     result = generate('Chinese_style_4.jpeg', content_image, num_iteration=25)
 
-    with open("test.png", 'wb') as f:
+    with open("test.txt", 'wb') as f:
         f.write(result)
