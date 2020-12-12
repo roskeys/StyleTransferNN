@@ -23,7 +23,7 @@ def encode_filename(filename):
 
 @app.post("/api/uploadfile/")
 async def create_upload_file(file: UploadFile = File(...)):
-    file_name = encode_filename(file.filename)
+    file_name = encode_filename(file.filename) + '.' + file.filename.split('.')[-1]
     with open(f'frontend/temp_image/{file_name}', 'wb') as f:
         shutil.copyfileobj(file.file, f)
     # file.file.read()) bytes
