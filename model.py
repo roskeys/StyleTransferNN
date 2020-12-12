@@ -24,6 +24,10 @@ style_layers_default = ['conv_1', 'conv_2', 'conv_3', 'conv_4', 'conv_5']
 
 def image_loader(image_name):
     image = Image.open(image_name)
+    if image.size[0] > 2 * imsize and image.size[1] > 2 * imsize:
+        times = min(image.size[0], image.size[1]) / imsize
+        new_size = (int(image.size[0] / times), int(image.size[1] / times))
+        image = image.resize(new_size)
     image = loader(image).unsqueeze(0)
     return image.to(device, torch.float)
 
@@ -160,7 +164,7 @@ def imshow(tensor, title=None):
 
 def generate(style_img_path, content_image, num_iteration=50):
     content_image = BytesIO(content_image)
-    style_image = image_loader(os.path.join("styles", style_img_path))
+    style_image = image_loader(os.path.join("frontend", "style", style_img_path))
     content_image = image_loader(content_image)
     input_img = content_image.clone()
     output_image = run_style_transfer(cnn, cnn_normalization_mean, cnn_normalization_std,
@@ -175,10 +179,10 @@ def generate(style_img_path, content_image, num_iteration=50):
 
 
 if __name__ == '__main__':
-    with open("changjiang10.jpg", 'rb') as f:
+    with open("test.png", 'rb') as f:
         content_image = f.read()
 
-    result = generate('Chinese_style_4.jpeg', content_image, num_iteration=25)
+    result = generate('44296041_30.jpg', content_image, num_iteration=300)
 
-    with open("test.txt", 'wb') as f:
+    with open("result.png", 'wb') as f:
         f.write(result)
