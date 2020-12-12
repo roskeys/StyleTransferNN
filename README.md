@@ -53,7 +53,7 @@ with open("result.png", 'wb') as f:
 
 where `STYLE_PAINTING_PATH` is a Chinese painting file path (there are some examples in `frontend/style` folder)
 
-## backend.py
+## `backend.py`
 We use FastApi to develop an API for our frontend.
 Please be careful with port number you open, and this port number should be the same in `backend.py` and `main.js` files.
-
+You may also need to change URL configurations in `main.js` file.
