@@ -30,6 +30,19 @@ aiofiles
 python-multipart
 ```
 
+To install dependencies:
+
+```
+# If you just want to see the model:
+pip3 install torch===1.7.1 torchvision===0.8.2 torchaudio===0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
+# If you want to run the server you can install
+pip3 install uvicorn fastapi aiofiles python-multipart
+```
+To see how the generation of image works (make sure you have test.png under the current folder):
+```
+python3 model.py
+```
+
 ## frontend
 
 You can even run frontend codes without a server! Just need to click `index.html`
